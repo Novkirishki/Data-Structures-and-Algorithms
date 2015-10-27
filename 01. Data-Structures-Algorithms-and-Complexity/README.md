@@ -60,7 +60,7 @@ long CalcSum(int[,] matrix, int row)
 Console.WriteLine(CalcSum(matrix, 0));
 ```
 
-####Answer: We have a recursion here. The outer 'for' will loop n times. On every loop it will call the same function with row + 1. The n newly called functions will do exaclty the same by calling new n functions with row+2. When we hit the last row the recursion will stop. This algorith makes a tree like this one: 
+####Answer: We have a recursion here. The outer 'for' will loop n times. On every loop it will call the same function with row + 1. The n newly called functions will do exaclty the same by calling new n functions with row+2. So we have n*n*n... m times because when we hit the last row the recursion will stop. This algorith makes a tree like this one: 
 
 ![tree](tree.png)
 
