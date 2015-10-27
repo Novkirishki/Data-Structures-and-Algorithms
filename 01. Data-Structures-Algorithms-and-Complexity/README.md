@@ -60,8 +60,4 @@ long CalcSum(int[,] matrix, int row)
 Console.WriteLine(CalcSum(matrix, 0));
 ```
 
-####Answer: We have a recursion here. The outer 'for' will loop n times. On every loop it will call the same function with row + 1. The n newly called functions will do exaclty the same by calling new n functions with row+2. So we have n * n * n... m times because when we hit the last row the recursion will stop. This algorith makes a tree like this one: 
-
-![tree](tree.png)
-
-####It has a dept of m and width of n ^ (m - 1). In conclusion the complexity is n ^ m.
+####Answer: We have a recursion here. The 'for' will loop n times every time we call the function. After the 'for' finishes the same function will be called with row + 1. So the function will be called m times, because when we hit the last row the recursion will stop. In conclusion the complexity of the algorithm is n * m.
