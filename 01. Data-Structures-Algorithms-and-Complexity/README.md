@@ -21,7 +21,7 @@ long Compute(int[] arr)
 }
 ```
 
-####Answer: The outer 'for' will loop n times, the inner 'while' will loop another n times(because on every loop we either increase start or decrease end). In conclusion the complexity is n*n. 
+####Answer: The outer 'for' will loop n times, the inner 'while' will loop another n times(because on every loop we either increase start or decrease end untill they are even, which takes exatly n operations). In conclusion the complexity is n*n. 
 
 2. What is the expected running time of the following C# code?
   - Explain why.
@@ -60,8 +60,8 @@ long CalcSum(int[,] matrix, int row)
 Console.WriteLine(CalcSum(matrix, 0));
 ```
 
-####Answer: We have a recursion here. The outer 'for' will loop n times. On every loop it will call the same function with row + 1. The newly called functions will do exaclty the same by calling new n functions with row+2. When we hit the last row the recursion will stop. This algorith makes a tree like this one: 
+####Answer: We have a recursion here. The outer 'for' will loop n times. On every loop it will call the same function with row + 1. The n newly called functions will do exaclty the same by calling new n functions with row+2. When we hit the last row the recursion will stop. This algorith makes a tree like this one: 
 
 ![tree](tree.png)
 
-It has a dept of m and width of n ^ (m - 1). In conclusion the complexity is n ^ m.
+####It has a dept of m and width of n ^ (m - 1). In conclusion the complexity is n ^ m.
