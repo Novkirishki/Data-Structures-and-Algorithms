@@ -12,9 +12,6 @@ namespace _2.DirectoryTraverse
     {
         public static void Main()
         {
-            // The program most probably will throw an error with this folder because you dont have access rights.
-            // Better give some other folder for root and see the results :)
-            // For example: @"C:\Program Files\WinRAR"
             var SourceDirectory = @"C:\Windows";
             var regex = new Regex(@"^*.exe$");
 
@@ -25,21 +22,28 @@ namespace _2.DirectoryTraverse
             while (directoriesPaths.Count != 0)
             {
                 var currentDirectory = directoriesPaths.Dequeue();
-                var files = Directory.GetFiles(currentDirectory);
-
-                foreach (var file in files)
+                try
                 {
-                    if (regex.IsMatch(file))
+                    var files = Directory.GetFiles(currentDirectory);
+
+                    foreach (var file in files)
                     {
-                        Console.WriteLine(file);
+                        if (regex.IsMatch(file))
+                        {
+                            Console.WriteLine(file);
+                        }
+                    }
+
+                    var directories = Directory.GetDirectories(currentDirectory);
+
+                    foreach (var dir in directories)
+                    {
+                        directoriesPaths.Enqueue(dir);
                     }
                 }
-
-                var directories = Directory.GetDirectories(currentDirectory);
-
-                foreach (var dir in directories)
+                catch (Exception e)
                 {
-                    directoriesPaths.Enqueue(dir);
+                    Console.WriteLine(e.Message);
                 }
             }
         }
