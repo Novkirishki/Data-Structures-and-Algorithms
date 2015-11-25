@@ -16,7 +16,7 @@
 
             for (int row = 1; row <= countOfNumbers; row++)
             {
-                for (int col = 1; col <= maxValue; col++)
+                for (int col = 0; col <= maxValue; col++)
                 {
                     if (table[row - 1, col] == 1)
                     {
