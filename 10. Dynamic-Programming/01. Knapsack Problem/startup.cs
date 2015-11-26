@@ -24,34 +24,34 @@ namespace _01.Knapsack_Problem
         public static void Main()
         {
             var weights = new int[] { 3, 8, 4, 1, 2, 8};
-            var costs = new int[] { 2, 12, 5, 4, 3, 13 };
+            var costs = new int[] { 20, 12, 5, 4, 3, 13 };
             var maxWeight = 10;
 
-            var table = new int[weights.Length, maxWeight];
+            var table = new int[weights.Length + 1, maxWeight + 1];
 
-            for (int row = 1; row < weights.Length; row++)
+            for (int row = 1; row <= weights.Length; row++)
             {
-                for (int col = 0; col < maxWeight; col++)
+                for (int col = 0; col <= maxWeight; col++)
                 {
-                    if (weights[row] > col)
+                    if (weights[row - 1] > col)
                     {
                         table[row, col] = table[row - 1, col];
                     }
                     else
                     {
-                        if (table[row - 1, col] > costs[row] + table[row - 1, col - weights[row]])
+                        if (table[row - 1, col] > costs[row - 1] + table[row - 1, col - weights[row - 1]])
                         {
                             table[row, col] = table[row - 1, col];
                         }
                         else
                         {
-                            table[row, col] = costs[row] + table[row - 1, col - weights[row]];
+                            table[row, col] = costs[row - 1] + table[row - 1, col - weights[row - 1]];
                         }
                     }
                 }
             }
 
-            Console.WriteLine(table[table.GetLength(0) -1, table.GetLength(1) - 1]);
+            Console.WriteLine(table[table.GetLength(0) - 1, table.GetLength(1) - 1]);
         }
     }
 }
